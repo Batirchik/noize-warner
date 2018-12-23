@@ -1,0 +1,7 @@
+argparse
+pyaudio
+pydub
+python-daemon
+six
+soundmeter
+gTTS
