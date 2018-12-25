@@ -1,7 +1,8 @@
 argparse
+gTTS
 pyaudio
 pydub
 python-daemon
 six
 soundmeter
-gTTS
+wheel
