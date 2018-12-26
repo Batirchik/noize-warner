@@ -12,13 +12,15 @@ language = 'ru'
 def get_message(rms):
     rms = int(rms)
     if rms < 6000:
-        return 'Tише!'
+        return 'Потише!'
     elif rms < 9000:
-        return 'Тише! Вашу мать!!'
+        return 'Тише!!'
     elif rms < 12000:
-        return 'Тише! Ёб Вашу мать!'
-    else:
-        return 'Да Вы совсем ахуели!'
+        return 'Тише! Слишком громко!'
+    elif rms < 16000:
+        return 'Слишком громко! на 30 децибел потише!'
+    else: # Very LOUD
+        return 'Да Вы совсем мох у ели!'
 
 def main():
     try:
