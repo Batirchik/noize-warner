@@ -31,10 +31,10 @@ def main():
     tts = gTTS(text=mytext, lang=language, slow=False)
     tts.save(mp3_name)
 
-    from sys import platform as _platform
-    if _platform == "linux" or _platform == "linux2":
+    platform = sys.platform
+    if platform == "linux" or platform == "linux2":
         pass
-    elif _platform == "darwin":
+    elif platform == "darwin":
         os.system("afplay " + mp3_name)
 
 if __name__ == "__main__":
