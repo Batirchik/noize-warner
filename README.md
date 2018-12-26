@@ -1,22 +1,29 @@
 # noize-warner
-Monitors a noize level and triggers an event if the level is too high
-Based on soundmeter and simple python script.
+
+It will replace some funtionality of Anton K. =)
+
+Monitors a noize level and triggers an event if the level is too high.
+The solution is based on soundmeter + simple python script + appriate launch with bash :)
 
 Setup:
-install os packages requirements for soundmeter (https://pypi.org/project/soundmeter/)
-pip install -r requirements.txt
-pip install --upgrade setuptools (might be needed)
-
-Place a config file at ~/.soundmeter/config
+1) Install os packages requirements for soundmeter (https://pypi.org/project/soundmeter/)
+2.0) Might be needed: pip install --upgrade setuptools
+2.1) For Ubuntu: sudo apt-get install python3-dev mpg123
+3) pip install -r requirements.txt
+4) Place a config file at ~/.soundmeter/config or make a symlink:
+mkdir ~/.soundmeter && cp config ~/.soundmeter/config 
 It should contain rms_as_trigger_arg = True - needed to pass rms value to out trigger script
 
-How to launch in a ok way: from the repo dir, for instance:
+It has some issues: soundmeter won't wait while the trigger ends and will continue to trigger and trigger and triger
+How to launch in a operable way:
 
-Problem: soundmeter won't wait while the trigger ends and will continue to trigger and trigger and triger
-So next loop will restart soundmeter.
+while true; do soundmeter --profile main --trigger +4000 5 --action  exec-stop --exec ./make_a_warning.py; sleep 5; done
 
-while true; do soundmeter --profile main --trigger +4000 3 --action  exec-stop --exec ./make_a_warning.py; sleep 5; done
-
-The voice messages are short so 5 sec is enough.
++4000 - the enrance level. ./make_a_warning.py contains all logic for choosing what action to take next (depending on rms level)
+if rms will be above 4000 5 timew in raw, it will trigger ./make_a_warning.py
+So above loop will restart soundmeter. The voice messages are short so 5 sec is enough.
 
 P.S.: If you have some free time, fix soundmeter behaviour ;)
+
+JFI: 
+Допустимые уровни шума http://www.acoustic.ua/directory/135

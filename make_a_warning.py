@@ -11,11 +11,11 @@ language = 'ru'
 
 def get_message(rms):
     rms = int(rms)
-    if rms < 4000:
+    if rms < 6000:
         return 'Tише!'
-    elif rms < 5000:
+    elif rms < 9000:
         return 'Тише! Вашу мать!!'
-    elif rms < 7000:
+    elif rms < 12000:
         return 'Тише! Ёб Вашу мать!'
     else:
         return 'Да Вы совсем ахуели!'
@@ -33,7 +33,7 @@ def main():
 
     platform = sys.platform
     if platform == "linux" or platform == "linux2":
-        pass
+        os.system("mpg123 " + mp3_name)
     elif platform == "darwin":
         os.system("afplay " + mp3_name)
 
